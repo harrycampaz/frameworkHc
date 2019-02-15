@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 use \Core\View;
+use App\Models\Post;
 /** 
 *Posts Controller
 * PHP -v 7.1.19
@@ -31,7 +32,8 @@ class Posts extends \Core\Controller {
     * @return void
     */
     public function indexAction(){
-        View::renderTemplate('Posts/index.html');
+        $posts = Post::getAll();
+        View::renderTemplate('Posts/index.html', ['posts' => $posts]);
     }
 
 }
